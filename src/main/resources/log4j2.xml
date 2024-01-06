@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration status="INFO" >
+    <Appenders>
+        <Console name="LogToConsole" target="SYSTEM_OUT">
+            <PatternLayout>
+                <Pattern>
+                    %d - %C [%M] -(%p) %m %n
+                </Pattern>
+            </PatternLayout>
+        </Console>
+        <File name="LogToFile" fileName="logs/app.log" append="true">
+            <PatternLayout>
+                <Pattern>
+                    %d{yyyy-MM-dd HH:mm:ss} - %C %m %n
+                </Pattern>
+            </PatternLayout>
+        </File>
+    </Appenders >
+    <Loggers>
+        <Logger name="com.mruruc.DbConTest" additivity="false">
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+        <Logger name="com.mruruc.ControllerTest" level="debug" additivity="false">
+            <AppenderRef ref="LogToFile"/>
+        </Logger>
+
+        <Root level="trace">
+            <AppenderRef ref="LogToConsole"/>
+            <AppenderRef ref="LogToFile"/>
+        </Root>
+    </Loggers>
+</Configuration>
+
+<!--
+
+%d is the date.
+%C is the full class name of the caller issuing the logging request.
+%M is the method name where the logging request was issued (note that generating the method name is slow and should be avoided in production).
+%p is the log level (e.g., INFO, DEBUG).
+%m is the actual log message.
+%n is a new line.
+-->
+<!--
+Level
+TRACE
+DEBUG
+INFO
+WARN
+ERROR
+FATAL
+-->
